@@ -143,39 +143,32 @@ document.getElementById('signup-form').addEventListener('submit', async function
 
 
 
+const multer = require('multer'); // Ensure multer is installed
+const upload = multer({ dest: 'uploads/' }); // Adjust as necessary
 
-
-
-app.post('/api/users/register', async (req, res) => {
-    const { fullname, email, password, community, clan, familyname, sex, profile_picture } = req.body;
+app.post('/api/users/register', upload.single('profile-picture'), async (req, res) => {
+    const { fullname, email, password, community, clan, familyname, sex } = req.body;
+    const profile_picture = req.file ? req.file.path : null; // Get the file path from multer
 
     try {
-        // Check if the user already exists
         const existingUser = await db.get(`SELECT * FROM users WHERE email = ?`, [email]);
 
         if (existingUser) {
-            // If the user exists, send a specific error message
             return res.status(400).json({ message: 'User already exists.' });
         }
 
-        // If the user does not exist, proceed with registration
         const result = await db.run(`INSERT INTO users (fullname, email, password, community, clan, familyname) VALUES (?, ?, ?, ?, ?, ?)`, [fullname, email, password, community, clan, familyname]);
-
         const userId = result.lastID; // ID of the newly created user
 
-        // Insert additional details into users_profile
         await db.run(`INSERT INTO users_profile (user_id, sex, profile_picture) VALUES (?, ?, ?)`, [userId, sex, profile_picture]);
 
-        // Respond with success message
         return res.status(201).json({ message: 'User registered successfully!' });
-        
+
     } catch (error) {
         console.error('Registration error:', error);
-        // Send a generic error message for unexpected errors
-        return res.status(500).json({ message: 'try again later.' });
+        return res.status(500).json({ message: 'Try again later.' });
     }
 });
-
 
     </script>
 

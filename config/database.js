@@ -1,4 +1,3 @@
-// config/database.js
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
@@ -13,6 +12,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
         console.log('Connected to the SQLite database.');
     }
 });
+
 // Function to initialize the database (create tables if they don't exist)
 const initDb = () => {
     db.run(`

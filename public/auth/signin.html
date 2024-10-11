@@ -24,11 +24,10 @@
             <li><button id="close-menu" class="close-menu" style="display: none;">&times;</button></li> <!-- Close button -->
         </ul>
     </nav>
-
     <div class="signin-container">
         <div class="signin-form">
             <h1>Sign In</h1>
-            <form id="login-form" action="/api/users/login" method="POST"> <!-- Added action and method -->
+            <form id="login-form">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
     
@@ -37,23 +36,99 @@
     
                 <button type="submit" class="btn-primary">Sign In</button>
             </form>
+    
+            <!-- Success and Error Message Elements -->
             <div id="success-message" style="display:none; color: green;"></div>
             <div id="error-message" style="display:none; color: red;"></div>
-            <p class="forgot-password-link"><a href="/forgotpassword.html">Forgot Password?</a></p>
-            <p class="signup-link">Don't have an account? <a href="index.html">Sign Up</a></p>
+    
+            <p class="forgot-password-link"><a href="./forgotpassword.html">Forgot Password?</a></p>
+            <p class="signup-link">Don't have an account? <a href="./register.html">Sign Up</a></p>
         </div>
     </div>
     
-</body>
-
-    <footer>
-        <div class="container">
-            <p>© 2024 Amon Data Centre. All Rights Reserved.</p>
-        </div>
-    </footer>
-<style>
+    <script>
+   
 
 
+
+    document.getElementById('login-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+    
+        // Get the email and password values from the form inputs
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+    
+        try {
+            // Make an API request to the backend to log in
+            const response = await fetch('/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }) // Send email and password
+            });
+    
+            // Parse the response from the server
+            const data = await response.json();
+    
+            if (response.ok) {
+                // Store the JWT token in localStorage
+                localStorage.setItem('authToken', data.token);
+    
+                // Display a success message and redirect the user to the profile page
+                alert('Login successful! Redirecting to your profile...');
+                window.location.href = '../userprofile.html'; // Redirect to the profile page
+            } else {
+                // Display an error message from the server
+                alert(data.message || 'Login failed. Please check your credentials.');
+            }
+        } catch (error) {
+            // Handle any network or server errors
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    });
+    </script>
+    
+    
+    
+<SCRipt src="register.js"></SCRipt>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <STYLe>
 
     /* Reset some default styles */
 

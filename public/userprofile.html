@@ -3,132 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/public/landingpage.css">
-    <link rel="stylesheet" href="/public/signup2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Amon Data Centre</title>
+    <link rel="stylesheet" href="userprofile.css"> <!-- Link your CSS file here -->
 </head>
-
-
 <body>
-   
-   <!-- Navigation Bar     /profileHome.html    -->
-   <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <a href="/home.html"> <img src="/public/images/log.jpg" alt="Amon Data Centre Logo"></a>  
-            <span></span>
+            <a href="/home.html"><img src="/images/log.jpg" alt="Amon Data Centre Logo"></a>
         </div>
         
         <button id="menu-toggle" class="menu-toggle">&#9776;</button>
-        <ul class="nav-links">
-             <!--  <li><a href="/public/home.html"> Home</a></li>-->
-            <li><a href="profileHome.html">🏠 Dashboard</a></li>
-            <li><a href="profiles.html"> 👤 Profiles</a></li>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="userhome.html">🏠 Dashboard</a></li>
+            <li><a href="#"> 👤 Profiles</a></li>
             <li><a href="settings.html"> ⚙️ Settings</a></li>
-            <li><button id="close-menu" class="close-menu" style="display: none;">&times;</button></li>
         </ul>
     </nav>
 
-    <body>
-        <script src="usersprofileupdate.js"></script>
-        
-        <body>
-           
-            <!-- Container for Profile -->
-            <div class="container">
-                <!-- Profile Section -->
-                <section class="profile-container">
-                    <!-- Profile Card -->
-                    <div class="card profile-card">
-                        <div class="profile-pic-container">
-                            <img src="Images/profileee.jpg" alt="Profile Avatar" class="profile-pic" id="profile-pic">
-                        </div>
-                        <div class="name-profile-container"><p>John Doe</p></div>
-                        <!-- Edit Profile Button -->
-                        <button class="edit-profile-btn" id="openModalBtn">Edit Profile</button>
-                    </div>
-        
-                    <!-- Profile Details -->
-                    <div class="card profile-details-card">
-                        <h2>Profile Details</h2>
-                        <div class="tile"><p><strong>Name:</strong> John Doe</p></div>
-                        <div class="tile"><p><strong>Sex:</strong> Male</p></div>
-                        <div class="tile"><p><strong>Occupation:</strong> Farmer</p></div>
-                        <div class="tile"><p><strong>Marital Status:</strong> Single</p></div>
-                        <div class="tile"><p><strong>Number of Children:</strong> 1</p></div>
-                        <div class="tile"><p><strong>Address:</strong> 123 Main St</p></div>
-                        <div class="tile"><p><strong>State of Residence:</strong> Cross River</p></div>
-                        <div class="tile"><p><strong>LGA Residence:</strong> Calabar South</p></div>
-                        <div class="tile"><p><strong>Email:</strong> john@example.com</p></div>
-                        <div class="tile"><p><strong>Date of Birth:</strong> 23/12/1900</p></div>
-                    </div>
-        
-                    <!-- Lineage Details -->
-                    <div class="card lineage-card">
-                        <h2>Lineage Details</h2>
-                        <div class="tile"><p><strong>Community:</strong> Example Community</p></div>
-                        <div class="tile"><p><strong>Clan:</strong> Example Clan</p></div>
-                        <div class="tile"><p><strong>Family Name:</strong> Doe</p></div>
-                    </div>
-                </section>
-        
-                <!-- Edit Profile Modal -->
+    <div class="container">
+        <section class="profile-container">
+            <div class="card profile-card">
+                <div class="profile-pic-container">
+                    <img src="Images/profileee.jpg" alt="Profile Avatar" class="profile-pic" id="profile-pic">
+                </div>
+                <div class="name-profile-container">
+                    <p id="profile-name">John Doe</p>
+                </div>
+                <button class="edit-profile-btn" id="openModalBtn">Edit Profile</button>
+            </div>
+
+            <div class="card profile-details-card">
+                <h2>Profile Details</h2>
+                <div class="tile"><p><strong>Name:</strong> <span id="profile-name-detail">John Doe</span></p></div>
+                <div class="tile"><p><strong>Sex:</strong> <span id="profile-sex">Male</span></p></div>
+                <div class="tile"><p><strong>Occupation:</strong> <span id="profile-occupation">Farmer</span></p></div>
+                <div class="tile"><p><strong>Marital Status:</strong> <span id="profile-marital-status">Single</span></p></div>
+                <div class="tile"><p><strong>Number of Children:</strong> <span id="profile-children">1</span></p></div>
+                <div class="tile"><p><strong>Address:</strong> <span id="profile-address">123 Main St</span></p></div>
+                <div class="tile"><p><strong>State of Residence:</strong> <span id="profile-state">Cross River</span></p></div>
+                <div class="tile"><p><strong>LGA Residence:</strong> <span id="profile-lga">Calabar South</span></p></div>
+                <div class="tile"><p><strong>Email:</strong> <span id="profile-email">john@example.com</span></p></div>
+                <div class="tile"><p><strong>Date of Birth:</strong> <span id="profile-dob">23/12/1900</span></p></div>
+            </div>
+            
+            <div class="card lineage-card">
+                <h2>Lineage Details</h2>
+                <div class="tile"><p><strong>Community:</strong> Example Community</p></div>
+                <div class="tile"><p><strong>Clan:</strong> Example Clan</p></div>
+                <div class="tile"><p><strong>Family Name:</strong> Doe</p></div>
+            </div>
+            
+       <!-- Modal -->
 <div class="modal" id="editModal">
     <div class="modal-content">
         <span class="close-btn" id="closeModalBtn">&times;</span>
         <h2>Edit Profile</h2>
-        <form id="profile-form" enctype="multipart/form-data"> <!-- Add enctype for file uploads -->
-            <!-- Profile Picture Upload Section -->
+        <form id="profile-form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="profile-pic-upload">Upload Profile Picture:</label>
-                <input type="file" id="profile-pic-upload" name="profile_picture" accept="image/*"> <!-- Update name for backend compatibility -->
+                <input type="file" id="profile-pic-upload" name="profile_picture" accept="image/*">
             </div>
-
-            <!-- Profile Fields -->
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="John Doe" required>
+                <input type="text" id="name" name="fullname" required>
             </div>
             <div class="form-group">
                 <label for="sex">Sex:</label>
-                <input type="text" id="sex" name="sex" value="Male" required>
+                <input type="text" id="sex" name="sex" required>
             </div>
             <div class="form-group">
                 <label for="occupation">Occupation:</label>
-                <input type="text" id="occupation" name="occupation" value="Farmer" required>
+                <input type="text" id="occupation" name="occupation" required>
             </div>
             <div class="form-group">
                 <label for="marital-status">Marital Status:</label>
-                <input type="text" id="marital-status" name="marital_status" value="Single" required> <!-- Update name for backend compatibility -->
+                <input type="text" id="marital-status" name="marital_status" required>
             </div>
             <div class="form-group">
                 <label for="children">Number of Children:</label>
-                <input type="number" id="children" name="number_of_children" value="1"> <!-- Update name for backend compatibility -->
+                <input type="number" id="children" name="number_of_children">
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="123 Main St">
+                <input type="text" id="address" name="address">
             </div>
             <div class="form-group">
                 <label for="state">State of Residence:</label>
-                <input type="text" id="state" name="state_of_residence" value="Cross River"> <!-- Update name for backend compatibility -->
+                <input type="text" id="state" name="state_of_residence">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="john@example.com" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
-                <input type="text" id="dob-input" name="date_of_birth" value="23/12/1900" required> <!-- Update name for backend compatibility -->
+                <input type="text" id="dob-input" name="date_of_birth" required>
                 <div class="toggle-container">
                     <input type="checkbox" id="toggle-dob-visibility" name="is_dob_public">
                     <label for="toggle-dob-visibility">Make Date of Birth Public</label>
                 </div>
             </div>
-
-            <input type="hidden" name="id" value="USER_ID_HERE"> <!-- Include hidden field for user ID -->
+            <input type="hidden" name="id" id="user-id">
             <button type="submit" class="save-profile-btn">Save Changes</button>
         </form>
         <div id="successMessage" class="success-message" style="display:none;">
@@ -138,466 +114,159 @@
 </div>
 
 
-
-          <script src="script.js"></script>
-
-        </body>
-        </html>
-        
-      <script>
-
-  
-
-</script>
-
-<script >
+    <script src="script.js"></script>
+</body>
+</html>
 
 
-</script>
-    
-<!----------------------------------- #end of form fill ------------------------------------------------------------------------>
+</body>
+</html>
 
-    
-<!------------------------------------------START OF PROFILE CSSS DESIGN---------------------------------------------------------------------------------------------------------------->
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar {
-    width: 100%;
-    height: 60px;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.profile-container {
-    margin-top: 60px; /* Space added between the navbar and profile */
-}
-
-.card {
-    background-color: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.profile-pic-container {
-    text-align: center;
-    margin-bottom: -20px;
-}
-
-.name-profile-container {
-    font-weight: 900; /* Very bold */
-    color: rgb(7, 91, 247); /* Blue color */
-    text-align: center; /* Center-align text */
-    font-size: 30px; /* You can adjust this size as needed */
-    margin-top: 20px; /* Optional: Add some spacing above the name */
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px; /* Additional space below profile picture */
-}
-
-.edit-profile-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.edit-profile-btn:hover {
-    background-color: #45a049;
-}
-
-.tile {
-    margin: 10px 0;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.toggle-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.toggle-container label {
-    margin-left: 10px;
-}
-
-.success-message {
-    color: green;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-</STYle>
+<script src="userprofile.js"></script>
 
 
 
-<!--start of ----------------------------------Modal and profile script------------------------------------------------------------------------------------------------------>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const token = localStorage.getItem('authToken');
 
-<SCRipt>
-  // Get modal and buttons
-const openModalBtn = document.getElementById('openModalBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const editModal = document.getElementById('editModal');
-
-// Open Modal
-openModalBtn.addEventListener('click', () => {
-    editModal.style.display = 'flex';
-});
-
-// Close Modal
-closeModalBtn.addEventListener('click', () => {
-    editModal.style.display = 'none';
-});
-
-// Close Modal by clicking outside
-window.addEventListener('click', (event) => {
-    if (event.target === editModal) {
-        editModal.style.display = 'none';
-    }
-});
-
-// Submit Form and Update Profile
-const profileForm = document.getElementById('profile-form');
-profileForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Simulate profile update success
-    document.getElementById('successMessage').style.display = 'block';
-    
-    // Close the modal after 2 seconds
-    setTimeout(() => {
-        editModal.style.display = 'none';
-        document.getElementById('successMessage').style.display = 'none';
-    }, 2000);
-});
-
-// Preview Uploaded Profile Picture
-const profilePicUpload = document.getElementById('profile-pic-upload');
-const profilePic = document.getElementById('profile-pic');
-
-profilePicUpload.addEventListener('change', function() {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profilePic.src = e.target.result; // Update profile picture on the main page
+        if (!token) {
+            window.location.href = './auth/signin.html';
         }
-        reader.readAsDataURL(file);
-    }
-});
 
-
-
-</SCRipt>
-
-<!-------------------------------------------end---------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-
-    /*  //////////////////////////////////////////////////////Navbar Styles failsafestyles for navbar ////////////////////////////////////////////////////////////////////////////////// */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #1858d8;
-        color: white;
-    }
-    
-    .navbar .logo {
-        font-size: 1.5em;
-    }
-    
-    .nav-links {
-        list-style: none;
-        display: flex;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    .nav-links li {
-        margin-left: 20px;
-    }
-    
-    .nav-links a {
-        color: white;
-        text-decoration: none;
-    }
-    
-    /* Menu Toggle Button */
-    .menu-toggle {
-        font-size: 24px;
-        cursor: pointer;
-        display: none;
-    }
-    
-    
-
-    /* Existing styles... */
-    
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 40%;
-            height: 100%;
-            background-color: #1858d8;
-            transition: left 0.3s ease-in-out;
-            padding-top: 60px;
-        }
-    
-        .nav-links.show {
-            left: 0;
-            display: flex;
-        }
-    
-        .nav-links li {
-            margin: 20px 0;
-            text-align: center;
-        }
-    
-        .menu-toggle {
-            display: block;
-        }
-    
-        .close-menu {
-            font-size: 30px;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-    
-        .close-menu {
-            display: none; /* Hidden by default */
-        }
-    
-        .close-menu.show {
-            display: block; /* Show when the menu is open */
-        }
-    
-        .hero-section {
-            padding: 20px;
-        }
-    
-        .form-container {
-            width: 90%;
-            margin: 20px auto;
-        }
-    }
-    
-        </style>
-    
-    
-
-    
-    <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const closeMenu = document.getElementById('close-menu');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Function to open the mobile menu
-    function openMenu() {
-        navLinks.classList.add('show');
-        closeMenu.style.display = 'block'; // Show close button
-    }
-    
-    // Function to close the mobile menu
-    function closeMenuFunc() {
-        navLinks.classList.remove('show');
-        closeMenu.style.display = 'none'; // Hide close button
-    }
-    
-    menuToggle.addEventListener('click', openMenu);
-    closeMenu.addEventListener('click', closeMenuFunc);
-    
-    // Close the menu when clicking outside of it
-    document.addEventListener('click', function(event) {
-        if (!navLinks.contains(event.target) && event.target !== menuToggle) {
-            closeMenuFunc();
-        }
+        // Fetch user profile data from API
+        fetch('/api/users/profile', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Session expired or invalid token. Please log in again.' || !data.email) {
+                alert('Session expired or invalid token. Please log in again.');
+                window.location.href = './auth/signin.html';
+            } else {
+                // Display user profile data
+                document.getElementById('profile-name-detail').textContent = data.fullname;
+                document.getElementById('profile-sex').textContent = data.sex;
+                document.getElementById('profile-occupation').textContent = data.occupation;
+                document.getElementById('profile-marital-status').textContent = data.marital_status;
+                document.getElementById('profile-children').textContent = data.number_of_children;
+                document.getElementById('profile-address').textContent = data.address;
+                document.getElementById('profile-state').textContent = data.state_of_residence;
+                document.getElementById('profile-email').textContent = data.email;
+                document.getElementById('profile-dob').textContent = data.date_of_birth;
+
+                // Pre-fill the form with current profile data
+                document.getElementById('name').value = data.fullname;
+                document.getElementById('sex').value = data.sex;
+                document.getElementById('occupation').value = data.occupation;
+                document.getElementById('marital-status').value = data.marital_status;
+                document.getElementById('children').value = data.number_of_children;
+                document.getElementById('address').value = data.address;
+                document.getElementById('state').value = data.state_of_residence;
+                document.getElementById('email').value = data.email;
+                document.getElementById('dob-input').value = data.date_of_birth;
+                document.getElementById('user-id').value = data.user_id; 
+
+                // Handle image source if returned in response
+                if (data.profile_picture) {
+                    // Assuming there is an img tag with id profile-pic
+                    document.getElementById('profile-pic').src = data.profile_picture;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching profile:', error);
+            alert('An error occurred while fetching your profile data.');
+        });
+
+        // Edit Profile
+        const profileForm = document.getElementById('profile-form');
+        profileForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(profileForm);
+            
+            fetch('/api/users/profile', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Profile updated successfully!') {
+                    document.getElementById('successMessage').style.display = 'block';
+                    // Update profile details on the page
+                    document.getElementById('profile-name-detail').textContent = formData.get('fullname');
+                    document.getElementById('profile-sex').textContent = formData.get('sex');
+                    document.getElementById('profile-occupation').textContent = formData.get('occupation');
+                    document.getElementById('profile-marital-status').textContent = formData.get('marital_status');
+                    document.getElementById('profile-children').textContent = formData.get('number_of_children');
+                    document.getElementById('profile-address').textContent = formData.get('address');
+                    document.getElementById('profile-state').textContent = formData.get('state_of_residence');
+                    document.getElementById('profile-email').textContent = formData.get('email');
+                    document.getElementById('profile-dob').textContent = formData.get('date_of_birth');
+                    if (formData.get('profile_picture')) {
+                        // Update the profile picture if uploaded
+                        document.getElementById('profile-pic').src = URL.createObjectURL(formData.get('profile_picture'));
+                    }
+                } else {
+                    alert('Failed to update profile. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating profile:', error);
+                alert('An error occurred while updating your profile.');
+            });
+        });
+
+        // Modal handling
+        const modal = document.getElementById('editModal');
+        document.getElementById('openModalBtn').addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
     });
-    //////////////////////////////////////end of toggle/////////////////////////////////////////////////////////////////////////////
-     </script>
-    
-
-
+</script>
 
 
     
+    <!-------------------------------------------end---------------------------------------------------------------------------------->
     
-    
+   
     
     
 
 
 
+ 
+   
 
+    
+    
+    
+    <script src="userprofile.js"></script>
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-
+    
+    
 
 
 
@@ -607,40 +276,3 @@ profilePicUpload.addEventListener('change', function() {
 
 
   
-<!-----------------------------------------------------end of form toggle ---------------------------------------------------------------------------------------------------------------->
-
-
-<!-- ---------------------------------------------------Modal script region-------------------------------------------------------------->
-
-<!--------------------------------End of modal script regios----------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Navbar Styles//////////////////////////////////////////-->
